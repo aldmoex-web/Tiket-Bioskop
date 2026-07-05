@@ -232,9 +232,12 @@ int jumlahPengguna = 3;
 User* currentUser = NULL;
 
 string roleToString(Role role) {
-    if(role == ROLE_ADMIN) return "Admin";
-    if(role == ROLE_KASIR) return "Kasir";
-    if(role == ROLE_PELANGGAN) return "Pelanggan";
+    if(role == ROLE_ADMIN) 
+        return "Admin";
+    if(role == ROLE_KASIR) 
+        return "Kasir";
+    if(role == ROLE_PELANGGAN) 
+        return "Pelanggan";
     return "Tamu";
 }
 
@@ -425,9 +428,12 @@ void cariFilmByMultiKriteria() {
     bool ada = false;
     cout << "\n==== HASIL PENCARIAN LANJUTAN ====" << endl;
     for(int i = 0; i < jumlahFilm; i++) {
-        if(!genre.empty() && !containsIgnoreCase(film[i].genre, genre)) continue;
-        if(maxHarga > 0 && film[i].hargaTiket > maxHarga) continue;
-        if(maxDurasi > 0 && film[i].durasi > maxDurasi) continue;
+        if(!genre.empty() && !containsIgnoreCase(film[i].genre, genre)) 
+            continue;
+        if(maxHarga > 0 && film[i].hargaTiket > maxHarga) 
+            continue;
+        if(maxDurasi > 0 && film[i].durasi > maxDurasi) 
+            continue;
 
         cout << film[i].idFilm << " | " << film[i].judulFilm << " | " << film[i].genre
              << " | Rp " << film[i].hargaTiket << " | " << film[i].durasi << " mnt" << endl;
