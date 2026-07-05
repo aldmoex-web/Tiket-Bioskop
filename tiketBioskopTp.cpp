@@ -4,6 +4,7 @@
 #include <sstream>
 #include <limits>
 #include <cctype>
+#include <climits>
 
 using namespace std;
 
