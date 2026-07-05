@@ -16,9 +16,9 @@ string to_string(T value)
     return ss.str();
 }
 
-/* =========================
-   CLASS FILM
-========================= */
+
+   ///CLASS FILM
+
 class Film {
 public:
     string idFilm;
@@ -28,9 +28,9 @@ public:
     double hargaTiket;
 };
 
-/* =========================
-   CLASS TIKET
-========================= */
+
+   ///CLASS TIKET
+
 class Tiket {
 public:
     string judulFilm;
@@ -94,9 +94,9 @@ public:
     }
 };
 
-/* =========================
-   DATA FILM (20 FILM FIX)
-========================= */
+
+   ///DATA FILM (20 FILM FIX)
+
 Film film[50] = {
     {"F01","Avengers Endgame","Action",181,50000},
     {"F02","Spider-Man NWH","Action",148,45000},
@@ -933,9 +933,9 @@ User* loginUser() {
     }
 }
 
-/* =========================
-   CLASS GENRE
-========================= */
+
+   ///CLASS GENRE
+
 class Genre {
 public:
     string namaGenre;
@@ -947,9 +947,9 @@ public:
     }
 };
 
-/* =========================
-   CLASS STUDIO
-========================= */
+
+   ///CLASS STUDIO
+
 class Studio {
 public:
     string kodeStudio;
@@ -962,9 +962,9 @@ public:
     }
 };
 
-/* =========================
-   CLASS JADWAL
-========================= */
+
+   ///CLASS JADWAL
+
 class Jadwal {
 public:
     string tanggal;
@@ -979,9 +979,9 @@ public:
     }
 };
 
-/* =========================
-   CLASS KURSI
-========================= */
+
+   ///CLASS KURSI
+
 class Kursi {
 public:
     string kodeKursi;
@@ -1234,9 +1234,9 @@ void pilihKursi(Tiket &t)
     }
 }
 
-/* =========================
-   CLASS PEMBAYARAN
-========================= */
+
+   ///CLASS PEMBAYARAN
+
 class Pembayaran {
 public:
     string metode;
@@ -1258,9 +1258,9 @@ public:
     }
 };
 
-/* =========================
-   CLASS TRANSAKSI
-========================= */
+
+   ///CLASS TRANSAKSI
+
 class Transaksi {
 public:
     string kodeTransaksi;
@@ -1296,9 +1296,9 @@ public:
 
 };
 
-/* =========================
-   CLASS LAPORAN
-========================= */
+
+   ///CLASS LAPORAN
+
 class Laporan {
 public:
 
@@ -1323,9 +1323,9 @@ public:
 
 };
 
-/* =========================
-   TAMPILKAN DAFTAR FILM
-========================= */
+
+   ///TAMPILKAN DAFTAR FILM
+
 void tampilDaftarFilm() {
 
     cout << "\n==========================================================================\n";
@@ -1361,9 +1361,9 @@ void tampilDaftarFilm() {
 
 }
 
-/* =========================
-   CARI FILM BERDASARKAN ID
-========================= */
+
+   ///CARI FILM BERDASARKAN ID
+
 Film cariFilm(string id) {
 
     for(int i=0;i<jumlahFilm;i++) {
@@ -1376,9 +1376,9 @@ Film cariFilm(string id) {
     return film[0];
 }
 
-/* =========================
-   PILIH FILM
-========================= */
+
+   ///PILIH FILM
+
 Film pilihFilm() {
 
     int pilihan;
@@ -1416,9 +1416,9 @@ Film pilihFilm() {
 }
 
 
-/* =========================
-   CLASS MEMBER / PELANGGAN
-========================= */
+
+   ///CLASS MEMBER / PELANGGAN
+
 class Member {
 public:
     string idMember;
@@ -1494,9 +1494,9 @@ public:
     }
 };
 
-/* =========================
-   DATA MEMBER GLOBAL
-========================= */
+
+  ///DATA MEMBER GLOBAL
+
 Member daftarMember[50];
 int jumlahMember = 0;
 
@@ -1614,9 +1614,9 @@ void tampilSemuaMember() {
     cout << "===============================================\n";
 }
 
-/* =========================
-   CLASS SNACK / MAKANAN
-========================= */
+
+   ///CLASS SNACK / MAKANAN
+
 class Snack {
 public:
     string kodeSnack;
@@ -1640,9 +1640,9 @@ public:
     }
 };
 
-/* =========================
-   DATA SNACK
-========================= */
+
+   ///DATA SNACK
+
 Snack daftarSnack[15] = {
     {"SK01","Popcorn Caramel","Snack",30000,true},
     {"SK02","Popcorn Asin","Snack",25000,true},
@@ -1758,9 +1758,9 @@ void tampilPesananSnack(PesananSnack pesanan[], int jumlahPesanan, double totalS
     cout << "====================================\n";
 }
 
-/* =========================
-   CLASS ULASAN FILM
-========================= */
+
+   ///CLASS ULASAN FILM
+
 class Ulasan {
 public:
     string idFilm;
@@ -1789,9 +1789,9 @@ public:
     }
 };
 
-/* =========================
-   DATA ULASAN GLOBAL
-========================= */
+
+   ///DATA ULASAN GLOBAL
+
 Ulasan daftarUlasan[100];
 int jumlahUlasan = 0;
 
@@ -1876,9 +1876,9 @@ void tampilSemuaUlasan() {
     cout << "====================================\n";
 }
 
-/* =========================
-   FILTER FILM BERDASARKAN GENRE
-========================= */
+
+   ///FILTER FILM BERDASARKAN GENRE
+
 void filterFilmByGenre() {
     cout << "\n====================================\n";
     cout << "       FILTER FILM BERDASARKAN GENRE\n";
@@ -1922,9 +1922,9 @@ void filterFilmByGenre() {
     cout << "==================================\n";
 }
 
-/* =========================
-   FILTER FILM BERDASARKAN HARGA
-========================= */
+
+   ///FILTER FILM BERDASARKAN HARGA
+
 void filterFilmByHarga() {
     cout << "\n====================================\n";
     cout << "     FILTER FILM BERDASARKAN HARGA\n";
@@ -1952,9 +1952,9 @@ void filterFilmByHarga() {
     cout << "==================================\n";
 }
 
-/* =========================
-   CARI FILM BERDASARKAN JUDUL
-========================= */
+
+   ///CARI FILM BERDASARKAN JUDUL
+
 void cariFilmByJudul() {
     cout << "\n====================================\n";
     cout << "       CARI FILM BERDASARKAN JUDUL\n";
@@ -1982,9 +1982,9 @@ void cariFilmByJudul() {
     cout << "==================================\n";
 }
 
-/* =========================
-   CLASS RIWAYAT TRANSAKSI
-========================= */
+
+   ///CLASS RIWAYAT TRANSAKSI
+
 class RiwayatTransaksi {
 public:
     string kodeTransaksi;
@@ -2027,9 +2027,9 @@ public:
     }
 };
 
-/* =========================
-   DATA RIWAYAT TRANSAKSI GLOBAL
-========================= */
+
+   ///DATA RIWAYAT TRANSAKSI GLOBAL
+
 RiwayatTransaksi riwayat[100];
 int jumlahRiwayat = 0;
 int nomorTransaksi = 1;
@@ -2263,9 +2263,9 @@ void tampilJumlahPenonton() {
     cout << "====================================\n";
 }
 
-/* =========================
-   LAPORAN STATISTIK LANJUTAN
-========================= */
+
+   ///LAPORAN STATISTIK LANJUTAN
+
 void tampilLaporanLanjutan() {
     cout << "\n====================================\n";
     cout << "       LAPORAN STATISTIK LANJUTAN\n";
@@ -2339,9 +2339,9 @@ void tampilLaporanLanjutan() {
     cout << "====================================\n";
 }
 
-/* =========================
-   VOUCHER / PROMO
-========================= */
+
+   ///VOUCHER / PROMO
+
 class Voucher {
 public:
     string kodeVoucher;
@@ -2422,9 +2422,9 @@ double terapkanVoucher(double total, bool &voucherDigunakan) {
     return total;
 }
 
-/* =========================
-   CLASS ANTRIAN / QUEUE TIKET
-========================= */
+
+   ///CLASS ANTRIAN / QUEUE TIKET
+
 class AntrianTiket {
 public:
     string namaAntrian[20];
@@ -2525,9 +2525,9 @@ void menuAntrian() {
     } while(pilih != 0);
 }
 
-/* =========================
-   INFORMASI BIOSKOP
-========================= */
+
+   ///INFORMASI BIOSKOP
+
 void tampilInfoBioskop() {
     cout << "\n====================================================\n";
     cout << "              INFORMASI CGV PAKUWON MALL\n";
@@ -2561,9 +2561,9 @@ void tampilInfoBioskop() {
     cout << "====================================================\n";
 }
 
-/* =========================
-   PERATURAN BIOSKOP
-========================= */
+
+   ///PERATURAN BIOSKOP
+
 void tampilPeraturanBioskop() {
     cout << "\n====================================================\n";
     cout << "            PERATURAN CGV CINEMAS\n";
@@ -2594,9 +2594,9 @@ void tampilPeraturanBioskop() {
     cout << "====================================================\n";
 }
 
-/* =========================
-   JADWAL TAYANG (HARDCODED)
-========================= */
+
+   ///JADWAL TAYANG (HARDCODED)
+
 void tampilJadwalTayang() {
     cout << "\n====================================================================\n";
     cout << "                     JADWAL TAYANG HARI INI\n";
@@ -2641,14 +2641,14 @@ void tampilJadwalTayang() {
     cout << "====================================================================\n";
 }
 
-/* =========================
-   KONVERSI DURASI
-========================= */
+
+   ///KONVERSI DURASI
+
 void tampilSinopsisFilm();
 
-/* =========================
-   MENU INFORMASI FILM
-========================= */
+
+   ///MENU INFORMASI FILM
+
 void menuInfoFilm() {
     int pilih;
     bool isPelanggan = currentUser != NULL && currentUser->role == ROLE_PELANGGAN;
@@ -2716,9 +2716,9 @@ void menuInfoFilm() {
     } while(pilih != 0);
 }
 
-/* =========================
-   MENU MEMBER
-========================= */
+
+   ///MENU MEMBER
+
 void menuMember() {
     int pilih;
     do {
@@ -2761,9 +2761,9 @@ void menuMember() {
     } while(pilih != 0);
 }
 
-/* =========================
-   MENU LAPORAN
-========================= */
+
+   ///MENU LAPORAN
+
 void menuLaporan() {
     int pilih;
     do {
@@ -2798,14 +2798,12 @@ void menuLaporan() {
     } while(pilih != 0);
 }
 
-/* =========================
-   PROSES PEMBELIAN TIKET
-   (Refactored dari main lama,
-    semua fitur asli dipertahankan)
-========================= */
-void prosesPembelianTiket() {
 
-    // ---- FITUR ASLI (tidak diubah) ----
+  /* ///PROSES PEMBELIAN TIKET
+   (Refactored dari main lama,
+    semua fitur asli dipertahankan) */
+ 
+void prosesPembelianTiket() {
 
     // Menampilkan daftar film
     tampilDaftarFilm();
@@ -2854,7 +2852,6 @@ void prosesPembelianTiket() {
     // Menampilkan tiket
     t.output();
 
-    // ---- FITUR BARU TAMBAHAN ----
 
     double totalSnack = 0;
     bool adaSnack = false;
@@ -3012,9 +3009,9 @@ void prosesPembelianTiket() {
 }
 
 
-/* =========================
-   SINOPSIS FILM
-========================= */
+
+   ///SINOPSIS FILM
+
 void tampilSinopsisFilm() {
     tampilDaftarFilm();
     string id;
@@ -3245,12 +3242,12 @@ void tampilSinopsisFilm() {
     cout << "====================================\n";
 }
 
-/* =========================
-   MENU INFO TAMBAHAN (diperbarui)
-========================= */
-/* =========================
-   MENU UTAMA
-========================= */
+
+   ///MENU INFO TAMBAHAN (diperbarui)
+
+
+   ///MENU UTAMA
+
 void tampilMenuUtama() {
     cout << "\n====================================================\n";
     cout << "           SELAMAT DATANG DI CGV CINEMAS\n";
@@ -3323,9 +3320,9 @@ void tampilMenuUtamaAdmin() {
 }
 
 
-/* =========================
-   KALKULATOR HARGA TIKET
-========================= */
+
+   ///KALKULATOR HARGA TIKET
+
 void kalkulatorHarga() {
     cout << "\n====================================\n";
     cout << "       KALKULATOR HARGA TIKET\n";
@@ -3367,9 +3364,9 @@ void kalkulatorHarga() {
     cout << "====================================\n";
 }
 
-/* =========================
-   REKOMENDASI FILM
-========================= */
+
+   ///REKOMENDASI FILM
+
 void rekomendasiFilm() {
     cout << "\n====================================\n";
     cout << "       REKOMENDASI FILM\n";
@@ -3451,9 +3448,9 @@ void rekomendasiFilm() {
     cout << "====================================\n";
 }
 
-/* =========================
-   PANDUAN PENGGUNAAN SISTEM
-========================= */
+
+   ///PANDUAN PENGGUNAAN SISTEM
+
 void tampilPanduan() {
     cout << "\n====================================================\n";
     cout << "           PANDUAN PENGGUNAAN SISTEM\n";
@@ -3498,9 +3495,9 @@ void tampilPanduan() {
     cout << "====================================================\n";
 }
 
-/* =========================
-   FAQ (FREQUENTLY ASKED QUESTIONS)
-========================= */
+
+   ///FAQ (FREQUENTLY ASKED QUESTIONS)
+
 void tampilFAQ() {
     cout << "\n====================================================\n";
     cout << "          FAQ - PERTANYAAN YANG SERING DITANYA\n";
@@ -3547,9 +3544,9 @@ void tampilFAQ() {
     cout << "====================================================\n";
 }
 
-/* =========================
-   PROMO AKTIF
-========================= */
+
+   ///PROMO AKTIF
+
 void tampilPromoAktif() {
     cout << "\n====================================================\n";
     cout << "              PROMO AKTIF CGV CINEMAS\n";
@@ -3589,9 +3586,9 @@ void tampilPromoAktif() {
     cout << "====================================================\n";
 }
 
-/* =========================
-   TIPS MENONTON DI BIOSKOP
-========================= */
+
+   ///TIPS MENONTON DI BIOSKOP
+
 void tampilTipsMenonton() {
     cout << "\n====================================================\n";
     cout << "           TIPS SERU MENONTON DI BIOSKOP\n";
@@ -3630,9 +3627,9 @@ void tampilTipsMenonton() {
     cout << "====================================================\n";
 }
 
-/* =========================
-   DAFTAR STUDIO LENGKAP
-========================= */
+
+   ///DAFTAR STUDIO LENGKAP
+
 void tampilDaftarStudio() {
     cout << "\n====================================================\n";
     cout << "         DAFTAR STUDIO CGV PAKUWON MALL\n";
@@ -3671,9 +3668,9 @@ void tampilDaftarStudio() {
     cout << "\n====================================================\n";
 }
 
-/* =========================
-   MENU BANTUAN
-========================= */
+
+   ///MENU BANTUAN
+
 void menuBantuan() {
     int pilih;
     do {
@@ -3710,9 +3707,9 @@ void menuBantuan() {
     } while(pilih != 0);
 }
 
-/* =========================
-   TENTANG APLIKASI
-========================= */
+
+   ///TENTANG APLIKASI
+
 void tampilTentangAplikasi() {
     cout << "\n====================================================\n";
     cout << "            TENTANG APLIKASI\n";
@@ -3740,18 +3737,10 @@ void tampilTentangAplikasi() {
     cout << "====================================================\n";
 }
 
-/* =========================================================
-   ==================  FITUR TAMBAHAN  ======================
-   ===========================================================
-   Semua fitur di bawah ini adalah fitur BARU yang ditambahkan
-   tanpa mengubah fitur-fitur yang sudah ada sebelumnya, dan
-   tanpa menambahkan library baru (hanya memakai iostream,
-   string, iomanip, sstream, limits, cctype yang sudah ada).
-========================================================= */
 
-/* =========================================================
-   1. SISTEM MANAJEMEN KARYAWAN
-========================================================= */
+
+   ///1. SISTEM MANAJEMEN KARYAWAN
+
 class Karyawan {
 public:
     string idKaryawan;
@@ -3911,9 +3900,9 @@ void menuKaryawan() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   2. SISTEM MULTI-CABANG BIOSKOP
-========================================================= */
+
+   ///2. SISTEM MULTI-CABANG BIOSKOP
+
 class Cabang {
 public:
     string kodeCabang;
@@ -4018,9 +4007,9 @@ void menuCabang() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   3. SISTEM FEEDBACK & KOMPLAIN PELANGGAN
-========================================================= */
+
+   ///3. SISTEM FEEDBACK & KOMPLAIN PELANGGAN
+
 class Feedback {
 public:
     string idFeedback;
@@ -4164,9 +4153,9 @@ void menuFeedback() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   4. SISTEM POIN LOYALITAS & PENUKARAN POIN
-========================================================= */
+
+   ///4. SISTEM POIN LOYALITAS & PENUKARAN POIN
+
 void tambahPoinMember() {
     cout << "\n====================================\n";
     cout << "      TAMBAH POIN MEMBER\n";
@@ -4285,9 +4274,9 @@ void menuPoinLoyalitas() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   5. SISTEM BLACKLIST PELANGGAN
-========================================================= */
+
+   ///5. SISTEM BLACKLIST PELANGGAN
+
 class BlacklistEntry {
 public:
     string nama;
@@ -4408,9 +4397,9 @@ void menuBlacklist() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   6. SISTEM CETAK E-TIKET / CETAK ULANG TIKET
-========================================================= */
+
+   ///6. SISTEM CETAK E-TIKET / CETAK ULANG TIKET
+
 string buatKodeBarcodeSimulasi(const string &kodeTransaksi) {
     string hasil = "";
     for(int i = 0; i < (int)kodeTransaksi.length(); i++) {
@@ -4475,9 +4464,9 @@ void menuCetakUlangTiket() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   7. SISTEM REFUND TIKET
-========================================================= */
+
+   ///7. SISTEM REFUND TIKET
+
 string kodeTransaksiRefund[100];
 string alasanRefund[100];
 int jumlahRefund = 0;
@@ -4572,9 +4561,9 @@ void menuRefund() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   8. SISTEM STATISTIK KUNJUNGAN HARIAN (GRAFIK ASCII)
-========================================================= */
+
+   ///8. SISTEM STATISTIK KUNJUNGAN HARIAN (GRAFIK ASCII)
+
 struct Kunjungan {
     string hari;
     int jumlahPengunjung;
@@ -4661,9 +4650,9 @@ void menuStatistikKunjungan() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   9. SISTEM JADWAL MINGGUAN BIOSKOP
-========================================================= */
+
+   ///9. SISTEM JADWAL MINGGUAN BIOSKOP
+
 string namaHariMinggu[7] = {"Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"};
 
 void tampilJadwalMingguan() {
@@ -4743,9 +4732,9 @@ void menuJadwalMingguan() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   10. SISTEM PROMO ULANG TAHUN MEMBER
-========================================================= */
+
+   ///10. SISTEM PROMO ULANG TAHUN MEMBER
+
 void cekPromoUlangTahun() {
     cout << "\n====================================\n";
     cout << "      PROMO ULANG TAHUN MEMBER\n";
@@ -4782,9 +4771,9 @@ void cekPromoUlangTahun() {
     }
 }
 
-/* =========================================================
-   11. SISTEM CEK KETERSEDIAAN KURSI LINTAS STUDIO
-========================================================= */
+
+   ///11. SISTEM CEK KETERSEDIAAN KURSI LINTAS STUDIO
+
 void cekKetersediaanSemuaStudio() {
     cout << "\n====================================================================\n";
     cout << "              KETERSEDIAAN KURSI SELURUH STUDIO\n";
@@ -4867,9 +4856,9 @@ void menuKetersediaanKursi() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   12. SISTEM PENGUMUMAN / NOTIFIKASI
-========================================================= */
+
+   ///12. SISTEM PENGUMUMAN / NOTIFIKASI
+
 class Pengumuman {
 public:
     string idPengumuman;
@@ -4975,9 +4964,9 @@ void menuPengumuman() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   13. SISTEM SURVEI KEPUASAN BIOSKOP (MULTI KATEGORI)
-========================================================= */
+
+   ///13. SISTEM SURVEI KEPUASAN BIOSKOP (MULTI KATEGORI)
+
 struct SurveiKepuasan {
     string nama;
     int nilaiPelayanan;
@@ -5069,9 +5058,9 @@ void menuSurvei() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   14. SISTEM RINGKASAN BACKUP DATA (SIMULASI)
-========================================================= */
+
+   ///14. SISTEM RINGKASAN BACKUP DATA (SIMULASI)
+
 void tampilRingkasanBackupData() {
     cout << "\n====================================================\n";
     cout << "           RINGKASAN BACKUP DATA SISTEM\n";
@@ -5095,9 +5084,9 @@ void tampilRingkasanBackupData() {
     cout << "[SUKSES] Ringkasan backup data berhasil ditampilkan.\n";
 }
 
-/* =========================================================
-   15. SISTEM LOG AKTIVITAS PENGGUNA (IN-MEMORY)
-========================================================= */
+
+   ///15. SISTEM LOG AKTIVITAS PENGGUNA (IN-MEMORY)
+
 string logAktivitas[200];
 string logWaktu[200];
 int jumlahLog = 0;
@@ -5152,9 +5141,9 @@ void menuLogAktivitas() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   16. SISTEM PENGINGAT JADWAL TAYANG (REMINDER)
-========================================================= */
+
+   ///16. SISTEM PENGINGAT JADWAL TAYANG (REMINDER)
+
 struct Reminder {
     string namaPengguna;
     string idFilm;
@@ -5255,9 +5244,9 @@ void menuReminder() {
     } while(pilih != 0);
 }
 
-/* =========================================================
-   17. KALKULATOR TOTAL BELANJA (TIKET + SNACK + VOUCHER)
-========================================================= */
+
+   ///17. KALKULATOR TOTAL BELANJA (TIKET + SNACK + VOUCHER)
+
 void kalkulatorTotalBelanja() {
     cout << "\n====================================\n";
     cout << "    KALKULATOR TOTAL BELANJA\n";
@@ -5323,9 +5312,9 @@ void kalkulatorTotalBelanja() {
     cout << "======================================\n";
 }
 
-/* =========================================================
-   18. FILTER FILM BERDASARKAN RATING ULASAN
-========================================================= */
+
+   ///18. FILTER FILM BERDASARKAN RATING ULASAN
+
 void filterFilmByRatingUlasan() {
     cout << "\n====================================\n";
     cout << "   FILTER FILM BERDASARKAN RATING\n";
@@ -5364,9 +5353,9 @@ void filterFilmByRatingUlasan() {
     cout << "====================================\n";
 }
 
-/* =========================================================
-   19. SISTEM PERBANDINGAN DUA FILM
-========================================================= */
+
+   ///19. SISTEM PERBANDINGAN DUA FILM
+
 void bandingkanFilm() {
     cout << "\n====================================\n";
     cout << "       BANDINGKAN DUA FILM\n";
@@ -5419,9 +5408,9 @@ void bandingkanFilm() {
     cout << "====================================\n";
 }
 
-/* =========================================================
-   MENU INDUK: FITUR TAMBAHAN
-========================================================= */
+
+  ///MENU INDUK: FITUR TAMBAHAN
+
 int mapMenuFiturTambahan(int pilih) {
     bool isAdmin = (currentUser != NULL && currentUser->role == ROLE_ADMIN);
     bool isKasir = (currentUser != NULL && currentUser->role == ROLE_KASIR);
@@ -5612,9 +5601,9 @@ void menuFiturTambahan() {
 }
 
 
-/* =========================
-   MAIN
-========================= */
+
+   ///MAIN
+
 int main() {
     while(true) {
         currentUser = loginUser();
