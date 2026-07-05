@@ -5421,37 +5421,96 @@ void bandingkanFilm() {
 /* =========================================================
    MENU INDUK: FITUR TAMBAHAN
 ========================================================= */
+int mapMenuFiturTambahan(int pilih) {
+    bool isAdmin = (currentUser != NULL && currentUser->role == ROLE_ADMIN);
+    bool isKasir = (currentUser != NULL && currentUser->role == ROLE_KASIR);
+
+    if(isAdmin) return pilih;
+    if(isKasir) {
+        switch(pilih) {
+            case 1: return 4;
+            case 2: return 6;
+            default: return pilih;
+        }
+    }
+
+    switch(pilih) {
+        case 1: return 2;
+        case 2: return 3;
+        case 3: return 4;
+        case 4: return 6;
+        case 5: return 7;
+        case 6: return 9;
+        case 7: return 10;
+        case 8: return 11;
+        case 9: return 12;
+        case 10: return 13;
+        case 11: return 15;
+        case 12: return 16;
+        case 13: return 17;
+        case 14: return 18;
+        case 15: return 19;
+        default: return pilih;
+    }
+}
+
 void menuFiturTambahan() {
     int pilih;
     do {
+        bool isAdmin = (currentUser != NULL && currentUser->role == ROLE_ADMIN);
+        bool isKasir = (currentUser != NULL && currentUser->role == ROLE_KASIR);
+
         cout << "\n====================================================\n";
         cout << "                 MENU FITUR TAMBAHAN\n";
         cout << "====================================================\n";
-        cout << "1.  Manajemen Karyawan (Admin)\n";
-        cout << "2.  Cabang Bioskop\n";
-        cout << "3.  Feedback & Komplain Pelanggan\n";
-        cout << "4.  Poin Loyalitas & Penukaran Poin\n";
-        cout << "5.  Blacklist Pelanggan (Kasir/Admin)\n";
-        cout << "6.  Cetak Ulang E-Tiket\n";
-        cout << "7.  Refund Tiket\n";
-        cout << "8.  Statistik Kunjungan Harian\n";
-        cout << "9.  Jadwal Mingguan Bioskop\n";
-        cout << "10. Promo Ulang Tahun Member\n";
-        cout << "11. Cek Ketersediaan Kursi Studio\n";
-        cout << "12. Papan Pengumuman\n";
-        cout << "13. Survei Kepuasan Bioskop\n";
-        cout << "14. Ringkasan Backup Data (Admin)\n";
-        cout << "15. Log Aktivitas Pengguna\n";
-        cout << "16. Pengingat Jadwal Tayang\n";
-        cout << "17. Kalkulator Total Belanja\n";
-        cout << "18. Filter Film Berdasarkan Rating Ulasan\n";
-        cout << "19. Bandingkan Dua Film\n";
+        if(isAdmin) {
+            cout << "1.  Manajemen Karyawan (Admin)\n";
+            cout << "2.  Cabang Bioskop\n";
+            cout << "3.  Feedback & Komplain Pelanggan\n";
+            cout << "4.  Poin Loyalitas & Penukaran Poin\n";
+            cout << "5.  Blacklist Pelanggan (Admin)\n";
+            cout << "6.  Cetak Ulang E-Tiket\n";
+            cout << "7.  Refund Tiket\n";
+            cout << "8.  Statistik Kunjungan Harian (Admin)\n";
+            cout << "9.  Jadwal Mingguan Bioskop\n";
+            cout << "10. Promo Ulang Tahun Member\n";
+            cout << "11. Cek Ketersediaan Kursi Studio\n";
+            cout << "12. Papan Pengumuman\n";
+            cout << "13. Survei Kepuasan Bioskop\n";
+            cout << "14. Ringkasan Backup Data (Admin)\n";
+            cout << "15. Log Aktivitas Pengguna\n";
+            cout << "16. Pengingat Jadwal Tayang\n";
+            cout << "17. Kalkulator Total Belanja\n";
+            cout << "18. Filter Film Berdasarkan Rating Ulasan\n";
+            cout << "19. Bandingkan Dua Film\n";
+        } else if(isKasir) {
+            cout << "1.  Poin Loyalitas & Penukaran Poin\n";
+            cout << "2.  Cetak Ulang E-Tiket\n";
+        } else {
+            cout << "1.  Cabang Bioskop\n";
+            cout << "2.  Feedback & Komplain Pelanggan\n";
+            cout << "3.  Poin Loyalitas & Penukaran Poin\n";
+            cout << "4.  Cetak Ulang E-Tiket\n";
+            cout << "5.  Refund Tiket\n";
+            cout << "6.  Jadwal Mingguan Bioskop\n";
+            cout << "7.  Promo Ulang Tahun Member\n";
+            cout << "8.  Cek Ketersediaan Kursi Studio\n";
+            cout << "9.  Papan Pengumuman\n";
+            cout << "10. Survei Kepuasan Bioskop\n";
+            cout << "11. Log Aktivitas Pengguna\n";
+            cout << "12. Pengingat Jadwal Tayang\n";
+            cout << "13. Kalkulator Total Belanja\n";
+            cout << "14. Filter Film Berdasarkan Rating Ulasan\n";
+            cout << "15. Bandingkan Dua Film\n";
+        }
         cout << "0.  Kembali ke Menu Utama\n";
         cout << "====================================================\n";
         cout << "Pilih: ";
         cin >> pilih;
 
-        switch(pilih) {
+        int action = mapMenuFiturTambahan(pilih);
+
+        switch(action) {
             case 1:
                 if(currentUser != NULL && currentUser->role == ROLE_ADMIN) {
                     catatLog("Membuka menu Manajemen Karyawan");
@@ -5473,11 +5532,11 @@ void menuFiturTambahan() {
                 menuPoinLoyalitas();
                 break;
             case 5:
-                if(canAccessKasirAdmin()) {
+                if(currentUser != NULL && currentUser->role == ROLE_ADMIN) {
                     catatLog("Membuka menu Blacklist Pelanggan");
                     menuBlacklist();
                 } else {
-                    cout << "[!] Hanya kasir dan admin yang dapat mengakses menu ini.\n";
+                    cout << "[!] Hanya admin yang dapat mengakses menu ini.\n";
                 }
                 break;
             case 6:
@@ -5489,8 +5548,12 @@ void menuFiturTambahan() {
                 menuRefund();
                 break;
             case 8:
-                catatLog("Membuka menu Statistik Kunjungan");
-                menuStatistikKunjungan();
+                if(currentUser != NULL && currentUser->role == ROLE_ADMIN) {
+                    catatLog("Membuka menu Statistik Kunjungan");
+                    menuStatistikKunjungan();
+                } else {
+                    cout << "[!] Hanya admin yang dapat mengakses menu ini.\n";
+                }
                 break;
             case 9:
                 catatLog("Membuka menu Jadwal Mingguan");
