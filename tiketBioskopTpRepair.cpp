@@ -29,7 +29,7 @@ public:
 };
 
 
-   ///CLASS TIKET
+   ///CLASS TIKETT
 
 class Tiket {
 public:
