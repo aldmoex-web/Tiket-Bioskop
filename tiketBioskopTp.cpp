@@ -7,7 +7,15 @@
 #include <climits>
 
 
+using namespace std;
 
+template<typename T>
+string to_string(T value)
+{
+    stringstream ss;
+    ss << value;
+    return ss.str();
+}
 
    ///CLASS FILM
 
