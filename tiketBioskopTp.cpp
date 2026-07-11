@@ -255,25 +255,7 @@ bool containsIgnoreCase(const string &text, const string &pattern) {
     return lowerText.find(lowerPattern) != string::npos;
 }
 
-void tampilDaftarFilm();
-void cariFilmByJudul();
-void cariFilmById();
-void cariFilmByMultiKriteria();
-void menuReservasi();
-void buatReservasi();
-void tampilReservasi();
-void batalkanReservasi();
-int cariReservasiByKode(const string &kode);
-void filterFilmByDurasi();
-void filterFilmByStudio();
-int getStudioIndexByName(const string &nama);
-void inisialisasiKursiStudio(int studioIdx);
-void tampilKursiStudio(int studioIdx);
-string getKelasKursi(int studioIdx, int rowIndex);
-bool prosesPembayaranDigital(class Pembayaran &p, int metode);
-double aplikasiDiskonDigital(int metode);
-void buatMemberOtomatisUntukPelangganBaru(const string& nama, const string& email);
-
+---
 User* cariPengguna(const string &username) {
     for(int i = 0; i < jumlahPengguna; i++) {
         if(daftarPengguna[i].username == username) {
