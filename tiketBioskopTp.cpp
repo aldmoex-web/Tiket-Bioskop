@@ -4808,7 +4808,287 @@ void cekKetersediaanSemuaStudio() {
     cout << "Catatan: Estimasi terpakai dihitung berdasarkan data reservasi aktif.\n";
 }
 
+void cekKetersediaanStudioTertentu() {
+    cout << "\n====================================\n";
+    cout << "     CEK KETERSEDIAAN STUDIO\n";
+    cout << "====================================\n";
+    cout << "Masukkan nama studio: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    string nama;
+    getline(cin, nama);
+    int idx = getStudioIndexByName(nama);
+    if(idx == -1) {
+        cout << "[!] Studio tidak ditemukan.\n";
+        return;
+    }
+    int estimasiTerpakai = 0;
+    for(int j = 0; j < jumlahReservasi; j++) {
+        if(containsIgnoreCase(reservasi[j].studio, daftarStudioInfo[idx].nama) && reservasi[j].status != "Dibatalkan") {
+            estimasiTerpakai += reservasi[j].jumlahTiket;
+        }
+    }
+    if(estimasiTerpakai > daftarStudioInfo[idx].kapasitas) estimasiTerpakai = daftarStudioInfo[idx].kapasitas;
+    int tersedia = daftarStudioInfo[idx].kapasitas - estimasiTerpakai;
+    cout << "\nStudio      : " << daftarStudioInfo[idx].nama << endl;
+    cout << "Tipe        : " << daftarStudioInfo[idx].tipe << endl;
+    cout << "Kapasitas   : " << daftarStudioInfo[idx].kapasitas << endl;
+    cout << "Terpakai    : " << estimasiTerpakai << endl;
+    cout << "Tersedia    : " << tersedia << endl;
+    if(tersedia <= 10 && tersedia > 0) {
+        cout << "[INFO] Kursi hampir penuh, segera lakukan pemesanan!\n";
+    } else if(tersedia <= 0) {
+        cout << "[INFO] Studio ini sudah penuh.\n";
+    }
+}
 
+void menuKetersediaanKursi() {
+    int pilih;
+    do {
+        cout << "\n====================================\n";
+        cout << "   MENU KETERSEDIAAN KURSI STUDIO\n";
+        cout << "====================================\n";
+        cout << "1. Cek Semua Studio\n";
+        cout << "2. Cek Studio Tertentu\n";
+        cout << "0. Kembali\n";
+        cout << "====================================\n";
+        cout << "Pilih: ";
+        cin >> pilih;
+        switch(pilih) {
+            case 1: cekKetersediaanSemuaStudio(); break;
+            case 2: cekKetersediaanStudioTertentu(); break;
+            case 0: break;
+            default: cout << "[!] Pilihan tidak valid.\n";
+        }
+    } while(pilih != 0);
+}
+
+
+   ///12. SISTEM PENGUMUMAN / NOTIFIKASI
+
+class Pengumuman {
+public:
+    string idPengumuman;
+    string judul;
+    string isi;
+    string tanggal;
+    string prioritas;
+};
+
+Pengumuman daftarPengumuman[30];
+int jumlahPengumuman = 0;
+int nomorPengumuman = 1;
+
+string generateIdPengumuman() {
+    string nomStr = to_string(nomorPengumuman);
+    while(nomStr.length() < 3) nomStr = "0" + nomStr;
+    string kode = "ANN" + nomStr;
+    nomorPengumuman++;
+    return kode;
+}
+
+void tambahPengumuman() {
+    cout << "\n====================================\n";
+    cout << "        TAMBAH PENGUMUMAN\n";
+    cout << "====================================\n";
+    if(jumlahPengumuman >= 30) {
+        cout << "[!] Kapasitas pengumuman penuh.\n";
+        return;
+    }
+    Pengumuman p;
+    p.idPengumuman = generateIdPengumuman();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Judul Pengumuman  : ";
+    getline(cin, p.judul);
+    cout << "Isi Pengumuman    : ";
+    getline(cin, p.isi);
+    cout << "Tanggal           : ";
+    getline(cin, p.tanggal);
+    cout << "Prioritas (Tinggi/Sedang/Rendah): ";
+    getline(cin, p.prioritas);
+
+    daftarPengumuman[jumlahPengumuman++] = p;
+    cout << "\n[SUKSES] Pengumuman berhasil ditambahkan dengan ID: " << p.idPengumuman << endl;
+}
+
+void tampilSemuaPengumuman() {
+    cout << "\n====================================================\n";
+    cout << "                  PAPAN PENGUMUMAN\n";
+    cout << "====================================================\n";
+    if(jumlahPengumuman == 0) {
+        cout << "Belum ada pengumuman.\n";
+    } else {
+        for(int i = jumlahPengumuman - 1; i >= 0; i--) {
+            cout << "\n[" << daftarPengumuman[i].prioritas << "] " << daftarPengumuman[i].judul << endl;
+            cout << daftarPengumuman[i].isi << endl;
+            cout << "Tanggal: " << daftarPengumuman[i].tanggal << endl;
+            cout << "----------------------------------------------------\n";
+        }
+    }
+    cout << "====================================================\n";
+}
+
+void hapusPengumuman() {
+    cout << "\n====================================\n";
+    cout << "        HAPUS PENGUMUMAN\n";
+    cout << "====================================\n";
+    cout << "Masukkan ID Pengumuman: ";
+    string id;
+    cin >> id;
+    for(int i = 0; i < jumlahPengumuman; i++) {
+        if(daftarPengumuman[i].idPengumuman == id) {
+            for(int j = i; j < jumlahPengumuman - 1; j++) {
+                daftarPengumuman[j] = daftarPengumuman[j+1];
+            }
+            jumlahPengumuman--;
+            cout << "[SUKSES] Pengumuman berhasil dihapus.\n";
+            return;
+        }
+    }
+    cout << "[!] Pengumuman tidak ditemukan.\n";
+}
+
+void menuPengumuman() {
+    int pilih;
+    do {
+        cout << "\n====================================\n";
+        cout << "        MENU PENGUMUMAN\n";
+        cout << "====================================\n";
+        cout << "1. Tampilkan Papan Pengumuman\n";
+        cout << "2. Tambah Pengumuman (Admin)\n";
+        cout << "3. Hapus Pengumuman (Admin)\n";
+        cout << "0. Kembali\n";
+        cout << "====================================\n";
+        cout << "Pilih: ";
+        cin >> pilih;
+        switch(pilih) {
+            case 1: tampilSemuaPengumuman(); break;
+            case 2: tambahPengumuman(); break;
+            case 3: hapusPengumuman(); break;
+            case 0: break;
+            default: cout << "[!] Pilihan tidak valid.\n";
+        }
+    } while(pilih != 0);
+}
+
+
+   ///13. SISTEM SURVEI KEPUASAN BIOSKOP (MULTI KATEGORI)
+
+struct SurveiKepuasan {
+    string nama;
+    int nilaiPelayanan;
+    int nilaiKebersihan;
+    int nilaiKenyamanan;
+    int nilaiHarga;
+};
+
+SurveiKepuasan daftarSurvei[100];
+int jumlahSurvei = 0;
+
+int mintaNilaiSurvei(const string &label) {
+    int nilai;
+    do {
+        cout << label << " (1-5): ";
+        cin >> nilai;
+        if(nilai < 1 || nilai > 5) cout << "[!] Masukkan angka 1-5!\n";
+    } while(nilai < 1 || nilai > 5);
+    return nilai;
+}
+
+void isiSurveiKepuasan() {
+    cout << "\n====================================\n";
+    cout << "      SURVEI KEPUASAN BIOSKOP\n";
+    cout << "====================================\n";
+    if(jumlahSurvei >= 100) {
+        cout << "[!] Kapasitas survei penuh.\n";
+        return;
+    }
+    SurveiKepuasan s;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Nama Anda: ";
+    getline(cin, s.nama);
+    s.nilaiPelayanan = mintaNilaiSurvei("Nilai Pelayanan Staff");
+    s.nilaiKebersihan = mintaNilaiSurvei("Nilai Kebersihan Bioskop");
+    s.nilaiKenyamanan = mintaNilaiSurvei("Nilai Kenyamanan Studio");
+    s.nilaiHarga = mintaNilaiSurvei("Nilai Kesesuaian Harga");
+
+    daftarSurvei[jumlahSurvei++] = s;
+    cout << "\n[SUKSES] Terima kasih telah mengisi survei kepuasan!\n";
+}
+
+void tampilHasilSurvei() {
+    cout << "\n====================================================\n";
+    cout << "            HASIL SURVEI KEPUASAN BIOSKOP\n";
+    cout << "====================================================\n";
+    if(jumlahSurvei == 0) {
+        cout << "Belum ada data survei.\n";
+        cout << "====================================================\n";
+        return;
+    }
+    double totalPelayanan = 0, totalKebersihan = 0, totalKenyamanan = 0, totalHarga = 0;
+    for(int i = 0; i < jumlahSurvei; i++) {
+        totalPelayanan += daftarSurvei[i].nilaiPelayanan;
+        totalKebersihan += daftarSurvei[i].nilaiKebersihan;
+        totalKenyamanan += daftarSurvei[i].nilaiKenyamanan;
+        totalHarga += daftarSurvei[i].nilaiHarga;
+    }
+    cout << fixed << setprecision(2);
+    cout << "Jumlah Responden        : " << jumlahSurvei << endl;
+    cout << "Rata-rata Pelayanan     : " << (totalPelayanan/jumlahSurvei) << "/5\n";
+    cout << "Rata-rata Kebersihan    : " << (totalKebersihan/jumlahSurvei) << "/5\n";
+    cout << "Rata-rata Kenyamanan    : " << (totalKenyamanan/jumlahSurvei) << "/5\n";
+    cout << "Rata-rata Harga         : " << (totalHarga/jumlahSurvei) << "/5\n";
+    double rataKeseluruhan = (totalPelayanan+totalKebersihan+totalKenyamanan+totalHarga) / (jumlahSurvei*4);
+    cout << "----------------------------------------------------\n";
+    cout << "Rata-rata Keseluruhan   : " << rataKeseluruhan << "/5\n";
+    cout << "====================================================\n";
+}
+
+void menuSurvei() {
+    int pilih;
+    do {
+        cout << "\n====================================\n";
+        cout << "      MENU SURVEI KEPUASAN\n";
+        cout << "====================================\n";
+        cout << "1. Isi Survei Kepuasan\n";
+        cout << "2. Lihat Hasil Survei\n";
+        cout << "0. Kembali\n";
+        cout << "====================================\n";
+        cout << "Pilih: ";
+        cin >> pilih;
+        switch(pilih) {
+            case 1: isiSurveiKepuasan(); break;
+            case 2: tampilHasilSurvei(); break;
+            case 0: break;
+            default: cout << "[!] Pilihan tidak valid.\n";
+        }
+    } while(pilih != 0);
+}
+
+
+   ///14. SISTEM RINGKASAN BACKUP DATA (SIMULASI)
+
+void tampilRingkasanBackupData() {
+    cout << "\n====================================================\n";
+    cout << "           RINGKASAN BACKUP DATA SISTEM\n";
+    cout << "====================================================\n";
+    cout << "[INFO] Berikut ringkasan seluruh data yang tersimpan di memori sistem\n";
+    cout << "       (simulasi backup, tanpa menulis ke file eksternal).\n\n";
+    cout << left << setw(35) << "Jumlah Film Terdaftar" << ": " << jumlahFilm << endl;
+    cout << left << setw(35) << "Jumlah Pengguna Terdaftar" << ": " << jumlahPengguna << endl;
+    cout << left << setw(35) << "Jumlah Member Terdaftar" << ": " << jumlahMember << endl;
+    cout << left << setw(35) << "Jumlah Reservasi" << ": " << jumlahReservasi << endl;
+    cout << left << setw(35) << "Jumlah Riwayat Transaksi" << ": " << jumlahRiwayat << endl;
+    cout << left << setw(35) << "Jumlah Ulasan Film" << ": " << jumlahUlasan << endl;
+    cout << left << setw(35) << "Jumlah Karyawan" << ": " << jumlahKaryawan << endl;
+    cout << left << setw(35) << "Jumlah Cabang Bioskop" << ": " << jumlahCabang << endl;
+    cout << left << setw(35) << "Jumlah Feedback Pelanggan" << ": " << jumlahFeedback << endl;
+    cout << left << setw(35) << "Jumlah Data Blacklist" << ": " << jumlahBlacklist << endl;
+    cout << left << setw(35) << "Jumlah Pengajuan Refund" << ": " << jumlahRefund << endl;
+    cout << left << setw(35) << "Jumlah Pengumuman" << ": " << jumlahPengumuman << endl;
+    cout << left << setw(35) << "Jumlah Data Survei" << ": " << jumlahSurvei << endl;
+    cout << "====================================================\n";
+    cout << "[SUKSES] Ringkasan backup data berhasil ditampilkan.\n";
+}
 
 
    ///15. SISTEM LOG AKTIVITAS PENGGUNA (IN-MEMORY)
