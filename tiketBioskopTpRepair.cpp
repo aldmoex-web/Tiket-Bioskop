@@ -54,9 +54,9 @@ public:
 
     void output() {
 
-        cout << "\n====================================\n";
+        cout << "\n=====================================\n";
         cout << "           TICKET DETAIL\n";
-        cout << "====================================\n";
+        cout << "=====================================\n";
 
         cout << "Film          : " << judulFilm << endl;
         cout << "Durasi        : " << durasi << " Minutes" << endl;
