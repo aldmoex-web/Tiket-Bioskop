@@ -31,7 +31,26 @@ public:
 
    ///CLASS TIKETT
 
+class Tiket {
+public:
+    string judulFilm;
+    int durasi;
+    string rating;
+    string lokasi;
 
+    int tanggal;
+    int bulan;
+    int tahun;
+
+    int waktuMulai;
+    int waktuSelesai;
+
+    string studio;
+    int jumlahTiket;
+    string kursi[10];
+    double harga;
+    double tambahanKursi;
+    double totalHarga;
 
     void output() {
 
